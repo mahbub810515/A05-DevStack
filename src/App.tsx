@@ -1,12 +1,12 @@
 import './App.css'
+import Nav from './components/Nav'
 
 function App() {
  
 
   return (
     <>
-      <h1>welcome to devstack app</h1>
-      <h5>welcome to devstack app</h5>
+      <Nav/>
     </>
   )
 }
