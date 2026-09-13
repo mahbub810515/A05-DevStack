@@ -14,7 +14,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b border-slate-300 px-5 py-5 md:px-8">
+    <nav className="sticky top-0 z-50 border-b border-slate-300 px-5 py-5 md:px-8">
       <div className="container mx-auto flex items-center justify-between">
         
         {/* Logo */}

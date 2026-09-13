@@ -2,6 +2,7 @@ import { use, useState } from "react"
 import type { TechnologyType } from "../../types/TechnologyType"
 import TechnologyCard from "./TechnologyCard"
 import YourStackCard from "./YourStackCard"
+import { toast, ToastContainer } from "react-toastify"
 
 export type TechnologiesProps = {
     technologiesPromise: Promise<TechnologyType[]>
@@ -17,9 +18,11 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
         if (technologyStack.includes(technology)) {
             const newTechnologyStack=technologyStack.filter(t=>t!==technology)
             setTechnologyStack(newTechnologyStack)
+            toast.success("technology remove frome stack");
         } else {
             const newTechnologyStack = [...technologyStack, technology];
             setTechnologyStack(newTechnologyStack)
+            toast.success("technology add to stack");
         }
     }
 
@@ -80,6 +83,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
       {/* Remove All */}
       <button
         onClick={() => setTechnologyStack([])}
+        
         disabled={technologyStack.length === 0}
         className="mt-4 w-full rounded-[10px] border border-red-400 py-2 text-[14px] font-bold text-red-400 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-40"
       >
@@ -88,6 +92,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
 
     </div>
   </div>
+  <ToastContainer/>
 </div>
     )
 }
