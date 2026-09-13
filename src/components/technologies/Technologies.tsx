@@ -13,12 +13,12 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
     const [technologyStack, setTechnologyStack] = useState<TechnologyType[]>([]);
 
     const handleTechnologyStack = (technology: TechnologyType): void => {
-        const newTechnologyStack = [...technologyStack, technology];
+        
         if (technologyStack.includes(technology)) {
             const newTechnologyStack=technologyStack.filter(t=>t!==technology)
             setTechnologyStack(newTechnologyStack)
         } else {
-
+            const newTechnologyStack = [...technologyStack, technology];
             setTechnologyStack(newTechnologyStack)
         }
     }
@@ -34,6 +34,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
                     {technologies.map(technology => <TechnologyCard
                         technology={technology}
                         handleTechnologyStack={handleTechnologyStack}
+                        isAdded={technologyStack.includes(technology)}
                     />)}
                 </div>
                 <div className="self-start border rounded-2xl p-2">
@@ -41,7 +42,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
                     <h3 className="mb-2">{technologyStack.length} Technology Selected</h3>
                     {technologyStack.map(stackItem=><YourStackCard 
                     stackItem={stackItem}
-                    handleTechnologyStack={handleTechnologyStack}
+                    handleTechnologyStack={handleTechnologyStack}                    
                     />)}
                 <button onClick={()=>setTechnologyStack([])} className="w-full font-bold text-[14px] text-red-400 border border-red-400 rounded-[10px] mt-4 py-2">Remove All</button>
                 </div>
