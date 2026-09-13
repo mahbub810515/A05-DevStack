@@ -1,4 +1,4 @@
-import { use } from "react"
+import { use, useState } from "react"
 import type { TechnologyType } from "../../types/TechnologyType"
 import TechnologyCard from "./TechnologyCard"
 
@@ -9,6 +9,18 @@ export type TechnologiesProps = {
 
 const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
     const technologies = use(technologiesPromise)
+    const [technologyStack, setTechnologyStack] = useState<TechnologyType[]>([]);
+
+    const handleTechnologyStack = (technology: TechnologyType): void => {
+        const newTechnologyStack = [...technologyStack, technology];
+        if (technologyStack.includes(technology)) {
+            const newTechnologyStack=technologyStack.filter(t=>t!==technology)
+            setTechnologyStack(newTechnologyStack)
+        } else {
+
+            setTechnologyStack(newTechnologyStack)
+        }
+    }
 
     return (
         <div className="container mx-auto">
@@ -16,14 +28,19 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
                 <h1 className='font-extrabold text-6xl pb-6'>Explore the<span className=' bg-linear-to-r from-orange-500 to-purple-500 bg-clip-text text-transparent'>Technologies</span></h1>
                 <p className='font-normal text-18px text-primary-black mb-2'>Pick one technology per category to build your ideal stack. </p>
             </div>
-             <div className="grid grid-cols-[3fr_1fr]">
+            <div className="grid grid-cols-[3fr_1fr]">
                 <div className="grid grid-cols-3 gap-4 border-primary-black border">
                     {technologies.map(technology => <TechnologyCard
-                        technology={technology}                       
+                        technology={technology}
+                        handleTechnologyStack={handleTechnologyStack}
                     />)}
                 </div>
+                <div className="p-2">
+                    <h2 className="font-bold text-lg">Your Stack</h2>
+                    <h3>{technologyStack.length} Technology Selected</h3>
                 </div>
-            
+            </div>
+
         </div>
     )
 }

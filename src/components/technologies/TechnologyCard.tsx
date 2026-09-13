@@ -4,9 +4,10 @@ import type { TechnologyType } from "../../types/TechnologyType"
 
 export type TechnologyProps ={
     technology: TechnologyType   
+    handleTechnologyStack:(technology:TechnologyType)=>void
 
 }
-const TechnologyCard = ({ technology }: TechnologyProps) => {
+const TechnologyCard = ({ technology,handleTechnologyStack }: TechnologyProps) => {
     return (
         <div className="border-primary-black rounded border p-5">
             <div className="flex justify-between mb-3">
@@ -21,7 +22,7 @@ const TechnologyCard = ({ technology }: TechnologyProps) => {
                     <p>{technology.difficulty}</p>
                     <p className="flex items-center gap-1"><FaStar className="text-amber-300" />{technology.rating}</p>
                 </div>
-                <button className="w-full font-medium text-3 text-white rounded bg-slate-500 py-2 px-20">Add to Stack</button>
+                <button onClick={()=>handleTechnologyStack(technology)} className="w-full font-medium text-3 text-white rounded bg-slate-500 py-2 px-20">Add to Stack</button>
             </div>
 
         </div>
