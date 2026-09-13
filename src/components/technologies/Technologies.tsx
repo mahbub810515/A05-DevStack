@@ -1,6 +1,7 @@
 import { use, useState } from "react"
 import type { TechnologyType } from "../../types/TechnologyType"
 import TechnologyCard from "./TechnologyCard"
+import YourStackCard from "./YourStackCard"
 
 export type TechnologiesProps = {
     technologiesPromise: Promise<TechnologyType[]>
@@ -35,9 +36,13 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
                         handleTechnologyStack={handleTechnologyStack}
                     />)}
                 </div>
-                <div className="p-2">
-                    <h2 className="font-bold text-lg">Your Stack</h2>
-                    <h3>{technologyStack.length} Technology Selected</h3>
+                <div className="rounded-2xl p-2">
+                    <h2 className="font-bold text-2xl">Your Stack</h2>
+                    <h3 className="mb-2">{technologyStack.length} Technology Selected</h3>
+                    {technologyStack.map(stackItem=><YourStackCard 
+                    stackItem={stackItem}
+                    handleTechnologyStack={handleTechnologyStack}
+                    />)}
                 </div>
             </div>
 
