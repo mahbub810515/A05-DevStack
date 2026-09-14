@@ -4,17 +4,17 @@ import type { NavItemTypes } from '../types/NavItemType'
 import ListItem from './ui/ListItem'
 
 const Footer = () => {
-    const [productItem, SetProductItem] = useState<NavItemTypes[]>([
+    const [productItem] = useState<NavItemTypes[]>([
         { id: 1, title: "Home" },
         { id: 2, title: "Technologies" },
         { id: 3, title: "Projects" },
     ])
-    const [companyItem, setCompanyItem] = useState<NavItemTypes[]>([
+    const [companyItem] = useState<NavItemTypes[]>([
         { id: 1, title: "About" },
         { id: 2, title: "Contact" },
         { id: 3, title: "Careers" },
     ])
-    const [legalItem, setLegalItem] = useState<NavItemTypes[]>([
+    const [legalItem] = useState<NavItemTypes[]>([
         { id: 1, title: "Privacy Policy" },
         { id: 2, title: "Terms of Service" },
     ])

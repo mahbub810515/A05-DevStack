@@ -27,7 +27,7 @@ const TechnologyCard = ({ technology,handleTechnologyStack,isAdded }: Technology
                  disabled={isAdded}
                  className={`w-full font-medium ${isAdded? "bg-gray-300 text-gray-500 cursor-not-allowed": "bg-black text-white"}
                     text-3 text-white rounded bg-slate-500 py-2 px-20`}
-                 >{isAdded?"Added":"Add To Stack"}</button>
+                 >{isAdded?"✓ Added":"Add To Stack"}</button>
             </div>
 
         </div>
